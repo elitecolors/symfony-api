@@ -1,5 +1,6 @@
 FROM php:8.2-fpm
 
+
 RUN apt update \
     && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev zip \
     && docker-php-ext-install intl opcache pdo pdo_mysql \
@@ -8,8 +9,23 @@ RUN apt update \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip
 
+# Install Bash
+RUN apt-get update && \
+    apt-get install -y bash && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /var/www/symfony_docker
+
+#Add shell to www-data user to allow to login.
+RUN chsh -s /bin/bash www-data
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN curl -sS https://get.symfony.com/cli/installer | bash
+
+# Git update
+RUN git config --global --add safe.directory /var/www/symfony_docker
+
+RUN usermod -u 1000 www-data
+RUN usermod -a -G users www-data
+RUN chown -R www-data:www-data /var/www
