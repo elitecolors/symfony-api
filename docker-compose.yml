@@ -48,6 +48,10 @@ services:
       PMA_PASSWORD: ${DB_USER_PSWD}
     depends_on:
       - mariadb
-
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"  # SMTP server port
+      - "8025:8025"  # MailHog web UI port
 volumes:
     mariadbdata:
