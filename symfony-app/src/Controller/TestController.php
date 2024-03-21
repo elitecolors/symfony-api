@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-class TestController
-{
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+class TestController extends AbstractController
+{
 }

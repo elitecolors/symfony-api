@@ -8,6 +8,13 @@
     <arg name="colors"/>
     <arg name="extensions" value="php"/>
 
+
+    <!-- Oposite of MultipleStatementAlignment -->
+    <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces">
+        <properties>
+            <property name="ignoreSpacesInAnnotation" value="true"/>
+        </properties>
+    </rule>
     <rule ref="PSR12"/>
 
     <file>bin/</file>
