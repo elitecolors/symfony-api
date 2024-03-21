@@ -7,7 +7,7 @@ Docker environment (based on official php and mysql docker hub repositories) req
 [![Latest Stable Version](https://poser.pugx.org/systemsdk/docker-symfony-api/v)](https://packagist.org/packages/systemsdk/docker-symfony-api)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-[Source code](https://github.com/systemsdk/docker-symfony-api.git)
+[Source code](https://github.com/elitecolors/symfony-api)
 
 ## Requirements
 * Docker version 18.06 or later
@@ -19,11 +19,11 @@ Note: OS recommendation - Linux Ubuntu based.
 
 ## Components
 1. Nginx 1.25
-2. PHP 8.3 fpm
+2. PHP 8.2 fpm
 3. MySQL 8
+4. xdebug
 4. Symfony 6
 5. RabbitMQ 3
 6. Elasticsearch 7
 7. Kibana 7
 8. Redis 7
-9. Mailpit (only for debug emails on dev environment)
