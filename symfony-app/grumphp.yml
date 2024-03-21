@@ -1,0 +1,18 @@
+grumphp:
+    git_hook_variables:
+        EXEC_GRUMPHP_COMMAND: docker exec phpserver php
+    tasks:
+        phpstan:
+            configuration: phpstan.neon
+            triggered_by: ['php']
+        git_commit_message:
+            matchers:
+                Must contain JIRA issue number: /(AA|XX)-\d+/
+        git_blacklist:
+            keywords:
+                - "die("
+                - "var_dump("
+                - "exit;"
+            whitelist_patterns: []
+            triggered_by: ['php']
+            regexp_type: G
