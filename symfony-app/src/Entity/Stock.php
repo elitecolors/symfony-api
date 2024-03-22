@@ -14,20 +14,21 @@ class Stock
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Product $product = null;
+    #[ORM\OneToOne]
+    private Product|null $product = null;
 
     #[ORM\Column]
-    private ?int $quantity = null;
+    private int|null $quantity = null;
 
     #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $updateAt = null;
+    private DateTimeImmutable|null $updateAt = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private DateTimeImmutable|null $createdAt = null;
 
-    public function __construct() {
-        $this->createdAt = new \DateTimeImmutable();
+    public function __construct()
+    {
+        $this->createdAt = new DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -35,19 +36,19 @@ class Stock
         return $this->id;
     }
 
-    public function getProduct(): ?Product
+    public function getProduct(): Product
     {
         return $this->product;
     }
 
-    public function setProduct(?Product $product): static
+    public function setProduct(Product $product): static
     {
         $this->product = $product;
 
         return $this;
     }
 
-    public function getQuantity(): ?int
+    public function getQuantity(): int|null
     {
         return $this->quantity;
     }
@@ -59,24 +60,24 @@ class Stock
         return $this;
     }
 
-    public function getUpdateAt(): ?\DateTimeImmutable
+    public function getUpdateAt(): DateTimeImmutable|null
     {
         return $this->updateAt;
     }
 
-    public function setUpdateAt(?\DateTimeImmutable $updateAt): static
+    public function setUpdateAt(DateTimeImmutable|null $updateAt): static
     {
         $this->updateAt = $updateAt;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): DateTimeImmutable|null
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function setCreatedAt(DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
 

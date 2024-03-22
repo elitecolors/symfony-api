@@ -25,7 +25,7 @@ class File
     private string|null $fullPath = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private DateTimeImmutable|null $createdAt = null;
 
     public function getId(): ?int
     {
