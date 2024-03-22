@@ -6,8 +6,8 @@ namespace App\Definition;
 
 final class StockData
 {
-    private readonly string $code;
-    private readonly int $quantity;
+    private string $code;
+    private int $quantity;
 
     public static function create(string $code, int $qty): self
     {
@@ -17,11 +17,11 @@ final class StockData
 
         return $stock;
     }
-    public  function getCode(): string
+    public function getCode(): string
     {
         return $this->code;
     }
-    public  function getQuantity(): int
+    public function getQuantity(): int
     {
         return $this->quantity;
     }

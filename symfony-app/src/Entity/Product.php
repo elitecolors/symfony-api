@@ -28,7 +28,7 @@ class Product
     ) {
         $this->code = $code;
         $this->quantity = $qty;
-        $this->price = 0;
+        $this->price = '0';
     }
 
     public static function create(string $code, int $qty): self
