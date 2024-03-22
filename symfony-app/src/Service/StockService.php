@@ -83,6 +83,9 @@ class StockService
         return $stock;
     }
 
+    /**
+    * @return array<Stock>
+     */
     public function getStockData(): array
     {
         return $this->stockRepository->findAll();
