@@ -13,7 +13,6 @@ Docker environment (based on official php and mysql docker hub repositories) req
 * Docker version 18.06 or later
 * Docker compose version 1.22 or later
 * An editor or IDE
-* MySQL Workbench
 
 Note: OS recommendation - Linux Ubuntu based.
 
@@ -27,3 +26,8 @@ Note: OS recommendation - Linux Ubuntu based.
 6. Elasticsearch 7
 7. Kibana 7
 8. Redis 7
+
+## to do next 
+Add unit test
+Api update stock
+Add messenger component ...
