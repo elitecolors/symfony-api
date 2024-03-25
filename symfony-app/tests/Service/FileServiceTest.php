@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Service;
 
+use App\Entity\File;
 use App\Service\FileService;
 use App\Tests\TestFileResource;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -32,7 +33,7 @@ class FileServiceTest extends KernelTestCase
     /**
     * @covers ::create
      */
-    public function testCreateFilePth(): void
+    public function testCreateFile(): void
     {
         $fileResource = TestFileResource::getStockFile();
         $stockFile = $fileResource['stock_test'];
