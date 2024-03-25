@@ -18,8 +18,7 @@ class FileService
         private readonly FileRepository $fileRepository,
         private readonly Filesystem $filesystem,
         private readonly ParameterBagInterface $parameterBag,
-    )
-    {
+    ) {
         $this->fileDestination = $this->parameterBag->get('app.files.dir');
     }
 
@@ -33,14 +32,12 @@ class FileService
 
         $this->filesystem->copy(
             $fileInfo->getRealPath(),
-            $this->fileDestination.'/'. $fileInfo->getBasename(),
+            $this->fileDestination . '/' . $fileInfo->getBasename(),
             true
         ); // will be aws later on
 
         $this->fileRepository->save($file);
 
         return $file;
-
     }
-
 }
