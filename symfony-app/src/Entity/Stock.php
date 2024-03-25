@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\StockRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use DateTimeImmutable;
+use JetBrains\PhpStorm\NoReturn;
 
 #[ORM\Entity(repositoryClass: StockRepository::class)]
+#[HasLifecycleCallbacks]
 class Stock
 {
     #[ORM\Id]
@@ -82,5 +85,12 @@ class Stock
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+
+    #[NoReturn] #[ORM\PreUpdate]
+    public function setUpdatedAtValue(): void
+    {
+        $this->updateAt = new DateTimeImmutable();
     }
 }
