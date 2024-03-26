@@ -2,19 +2,19 @@
 
 namespace App\Controller;
 
+use App\Service\SerializerService;
 use App\Service\StockService;
-use Nelmio\ApiDocBundle\Annotation\Model;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use OpenApi\Attributes as OA;
 
-class StockController extends AbstractController
+class StockController extends BaseController
 {
     public function __construct(
+        SerializerService $serializer,
         private readonly StockService $stockService,
     ) {
+        parent::__construct($serializer);
     }
     #[OA\Get(
         description: 'Stock Api',
@@ -29,10 +29,10 @@ class StockController extends AbstractController
         ]
     )]
     #[Route('/api/stock', name: 'app_stock')]
-    public function index(): JsonResponse
+    public function index(): Response
     {
         $stockData = $this->stockService->getStockData();
 
-        return $this->json($stockData);
+        return $this->createApiResponse(['data' => $stockData]);
     }
 }

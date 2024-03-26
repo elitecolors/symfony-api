@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use DateTimeImmutable;
 use JetBrains\PhpStorm\NoReturn;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: StockRepository::class)]
 #[HasLifecycleCallbacks]
@@ -18,9 +19,11 @@ class Stock
     private ?int $id = null;
 
     #[ORM\OneToOne]
+    #[Groups(['serializeGroup'])]
     private Product|null $product = null;
 
     #[ORM\Column]
+    #[Groups(['serializeGroup'])]
     private int|null $quantity = null;
 
     #[ORM\Column(nullable: true)]
