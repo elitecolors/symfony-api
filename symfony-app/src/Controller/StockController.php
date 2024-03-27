@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use App\Service\SerializerService;
 use App\Service\StockService;
+use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use OpenApi\Attributes as OA;
 
 class StockController extends BaseController
 {
@@ -16,6 +16,7 @@ class StockController extends BaseController
     ) {
         parent::__construct($serializer);
     }
+
     #[OA\Get(
         description: 'Stock Api',
         tags: ['stock'],

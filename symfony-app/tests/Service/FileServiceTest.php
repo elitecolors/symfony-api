@@ -31,7 +31,7 @@ class FileServiceTest extends KernelTestCase
     }
 
     /**
-    * @covers ::create
+     * @covers ::create
      */
     public function testCreateFile(): void
     {

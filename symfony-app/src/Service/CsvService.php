@@ -16,10 +16,11 @@ use function array_intersect;
 class CsvService
 {
     /**
-     * @return array<StockData>
      * @throws UnavailableStream
      * @throws SyntaxError
      * @throws Exception
+     *
+     * @return array<StockData>
      */
     public static function getData(string $filePath): array
     {
@@ -27,7 +28,7 @@ class CsvService
 
         $csv->setHeaderOffset(0); // Skip the header row
 
-        if (self::ensureCsvFileStructureAction($csv->getHeader()) === false) {
+        if (false === self::ensureCsvFileStructureAction($csv->getHeader())) {
             throw new StockDataException('wrong file data !');
         }
 

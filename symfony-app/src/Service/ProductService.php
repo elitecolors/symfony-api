@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Definition\ProductDTO;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
 
@@ -13,11 +14,11 @@ class ProductService
     {
     }
 
-    public function create(string $code, int $qty): Product
+    public function create(ProductDTO $productDTO): Product
     {
-        $product = Product::create($code, $qty);
+        $product = Product::create($productDTO->getCode(), $productDTO->getQty());
 
-        $this->productRepository->save($product);
+        $this->productRepository->save($product, true);
 
         return $product;
     }

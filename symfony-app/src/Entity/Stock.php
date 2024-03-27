@@ -90,7 +90,6 @@ class Stock
         return $this;
     }
 
-
     #[NoReturn] #[ORM\PreUpdate]
     public function setUpdatedAtValue(): void
     {

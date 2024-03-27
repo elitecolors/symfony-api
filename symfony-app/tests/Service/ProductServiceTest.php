@@ -29,6 +29,7 @@ class ProductServiceTest extends KernelTestCase
 
     /**
      * @dataProvider createProductProvider
+     *
      * @covers ::create
      */
     public function testCreate(string $code, int $qty): void

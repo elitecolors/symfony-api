@@ -27,7 +27,6 @@ class ImportStockCommand extends Command
         parent::__construct();
     }
 
-
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
@@ -36,10 +35,11 @@ class ImportStockCommand extends Command
 
         $stockFolder = $this->parameterBag->get('app.stock.dir');
 
-        $io->note('check if stock folder exist: ' . $stockFolder);
+        $io->note('check if stock folder exist: '.$stockFolder);
 
-        if ($this->filesystem->exists($stockFolder) === false) {
+        if (false === $this->filesystem->exists($stockFolder)) {
             $io->error('folder stock not exist !');
+
             return Command::FAILURE;
         }
 
@@ -48,8 +48,9 @@ class ImportStockCommand extends Command
 
         $finder->files()->in($stockFolder);
 
-        if ($finder->count() === 0) {
+        if (0 === $finder->count()) {
             $io->warning('empty stock folder');
+
             return Command::SUCCESS;
         }
 
@@ -57,12 +58,13 @@ class ImportStockCommand extends Command
             try {
                 $this->stockService->importDataFromFile($file);
             } catch (StockDataException) {
-                $io->warning('error parsing data from file: ' . $file->getBasename());
+                $io->warning('error parsing data from file: '.$file->getBasename());
                 continue;
             }
         }
 
         $io->success('Data imported');
+
         return Command::SUCCESS;
     }
 }

@@ -26,13 +26,13 @@ class FileService
     {
         $file = File::create($fileInfo->getBasename(), $fileInfo->getRealPath());
 
-        if ($this->filesystem->exists($this->fileDestination) === false) {
+        if (false === $this->filesystem->exists($this->fileDestination)) {
             $this->filesystem->mkdir($this->fileDestination);
         }
 
         $this->filesystem->copy(
             $fileInfo->getRealPath(),
-            $this->fileDestination . '/' . $fileInfo->getBasename(),
+            $this->fileDestination.'/'.$fileInfo->getBasename(),
             true
         ); // will be aws later on
 

@@ -6,5 +6,4 @@ namespace App\Tests\Service;
 
 class StockServiceTest
 {
-
 }

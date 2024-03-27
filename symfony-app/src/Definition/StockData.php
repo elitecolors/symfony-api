@@ -17,10 +17,12 @@ final class StockData
 
         return $stock;
     }
+
     public function getCode(): string
     {
         return $this->code;
     }
+
     public function getQuantity(): int
     {
         return $this->quantity;

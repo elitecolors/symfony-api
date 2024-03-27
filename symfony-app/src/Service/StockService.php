@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Definition\ProductDTO;
 use App\Definition\StockData;
 use App\Entity\Product;
 use App\Entity\Stock;
@@ -26,11 +27,11 @@ class StockService
     {
         try {
             $data = CsvService::getData($splFileInfo->getRealPath());
-        } catch (UnavailableStream | Exception) {
+        } catch (UnavailableStream|Exception) {
             throw new StockDataException();
         }
 
-        if ($data === []) {
+        if ([] === $data) {
             return;
         }
 
@@ -41,8 +42,13 @@ class StockService
 
             $product = $this->productService->getProductByCode($stockData->getCode());
 
-            if ($product === null) {
-                $product = $this->productService->create($stockData->getCode(), $stockData->getQuantity());
+            if (null === $product) {
+                $productDto = ProductDTO::create(
+                    $stockData->getQuantity(),
+                    $stockData->getCode(), '0'
+                );
+
+                $product = $this->productService->create($productDto);
             }
 
             $this->manageStock($product, $stockData);
@@ -55,8 +61,9 @@ class StockService
     {
         $stock = $this->stockRepository->findOneBy(['product' => $product]);
 
-        if ($stock === null) {
+        if (null === $stock) {
             $this->create($product, $stockData);
+
             return;
         }
 
@@ -84,7 +91,7 @@ class StockService
     }
 
     /**
-    * @return array<Stock>
+     * @return array<Stock>
      */
     public function getStockData(): array
     {

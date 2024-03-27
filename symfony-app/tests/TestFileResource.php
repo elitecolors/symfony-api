@@ -28,6 +28,6 @@ class TestFileResource
 
     public static function getResourcesPath(string $fileName): string
     {
-        return __DIR__ . '/Resources/' . $fileName;
+        return __DIR__.'/Resources/'.$fileName;
     }
 }
