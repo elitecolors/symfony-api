@@ -6,7 +6,6 @@ use App\Repository\StockRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use DateTimeImmutable;
-use JetBrains\PhpStorm\NoReturn;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: StockRepository::class)]
@@ -90,7 +89,7 @@ class Stock
         return $this;
     }
 
-    #[NoReturn] #[ORM\PreUpdate]
+     #[ORM\PreUpdate]
     public function setUpdatedAtValue(): void
     {
         $this->updateAt = new DateTimeImmutable();
