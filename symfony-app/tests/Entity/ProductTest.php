@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\Product;
-use JetBrains\PhpStorm\NoReturn;
 use PHPUnit\Framework\TestCase;
 
 /** @coversDefaultClass \App\Entity\Product */
@@ -14,7 +13,7 @@ class ProductTest extends TestCase
     /**
      * @covers ::create
      */
-    #[NoReturn] public function testCreateProduct(): void
+     public function testCreateProduct(): void
     {
         $product = Product::create('test', 1);
         $this->assertInstanceOf(Product::class, $product);
