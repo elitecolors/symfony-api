@@ -8,6 +8,7 @@ use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/api/stock', name: 'app_stock')]
 class StockController extends BaseController
 {
     public function __construct(
@@ -29,8 +30,8 @@ class StockController extends BaseController
             new OA\Response(response: Response::HTTP_INTERNAL_SERVER_ERROR, description: 'code 500, ooops!'),
         ]
     )]
-    #[Route('/api/stock', name: 'app_stock')]
-    public function index(): Response
+    #[Route('', name: 'app_stock', methods: 'GET')]
+    public function getStockData(): Response
     {
         $stockData = $this->stockService->getStockData();
 
