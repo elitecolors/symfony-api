@@ -7,7 +7,6 @@ Docker environment (based on official php and mysql docker hub repositories) req
 [![Latest Stable Version](https://poser.pugx.org/systemsdk/docker-symfony-api/v)](https://packagist.org/packages/systemsdk/docker-symfony-api)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-[Source code](https://github.com/elitecolors/symfony-api)
 
 ## Requirements
 * Docker version 18.06 or later
@@ -27,7 +26,10 @@ Note: OS recommendation - Linux Ubuntu based.
 7. Kibana 7
 8. Redis 7
 
-## to do next 
-Add unit test
-Api update stock
-Add messenger component ...
+## Start project
+1. docker-compose build
+2. docker-compose up -d
+
+
+### Access to phpserver container 
+docker exec -it -u www-data api-phpserver /bin/bash
