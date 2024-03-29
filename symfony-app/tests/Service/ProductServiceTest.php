@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Service;
 
+use App\Definition\ProductDTO;
 use App\Entity\Product;
 use App\Service\ProductService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -29,12 +30,12 @@ class ProductServiceTest extends KernelTestCase
 
     /**
      * @dataProvider createProductProvider
-     *
      * @covers ::create
      */
     public function testCreate(string $code, int $qty): void
     {
-        $product = $this->productService->create($code, $qty);
+        $dto = ProductDTO::create($qty, $code , '0');
+        $product = $this->productService->create($dto);
 
         $this->assertInstanceOf(Product::class, $product);
 
