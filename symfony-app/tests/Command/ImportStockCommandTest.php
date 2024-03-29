@@ -6,6 +6,7 @@ namespace App\Tests\Command;
 
 use App\Command\ImportStockCommand;
 use App\Service\StockService;
+use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Filesystem\Filesystem;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
@@ -17,9 +18,9 @@ class ImportStockCommandTest extends TestCase
 {
     private ImportStockCommand $command;
     private CommandTester $tester;
-    private ParameterBagInterface $parameterBag;
-    private Filesystem $filesystem;
-    private StockService $stockService;
+    private ParameterBagInterface|MockObject $parameterBag;
+    private Filesystem|MockObject $filesystem;
+    private StockService|MockObject $stockService;
 
     protected function setUp(): void
     {

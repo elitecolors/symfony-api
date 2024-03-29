@@ -26,16 +26,16 @@ class BaseController extends AbstractController
     }
 
     protected function createApiResponse(
-        $data,
-        $statusCode = Response::HTTP_OK,
-        $groups = [SerializerEnum::DEFAULT_SERIALIZATION_GROUP->value],
+        mixed $data,
+        int $statusCode = Response::HTTP_OK,
+        array $groups = [SerializerEnum::DEFAULT_SERIALIZATION_GROUP->value],
     ): Response {
         $json = $this->serialize($data, $groups);
 
         return new Response($json, $statusCode, ['Content-Type' => 'application/json']);
     }
 
-    protected function serialize($data, $groups, $format = 'json'): string
+    protected function serialize(mixed $data, array $groups, string $format = 'json'): string
     {
         return $this->serializer->serializeGroup($data, $groups, $format);
     }
