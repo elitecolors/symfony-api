@@ -12,10 +12,10 @@ use Doctrine\ORM\Events;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 #[AsEntityListener(event: Events::postPersist, method: 'onPostPersist', entity: Product::class)]
-class ProductUpdate
+readonly class ProductUpdate
 {
     public function __construct(
-        private readonly MessageBusInterface $bus
+        private MessageBusInterface $bus
     ) {}
     public function onPostPersist(Product $product, PostPersistEventArgs $event): void
     {
@@ -24,5 +24,4 @@ class ProductUpdate
         $this->bus->dispatch($productMessage);
 
     }
-
 }

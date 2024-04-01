@@ -7,7 +7,7 @@ namespace App\Message\Notifications;
 
 use App\Message\Notifications\Notification\NotificationInterface;
 
-readonly class NotificationMessage
+readonly class NotificationMessage implements NotificationInterface
 {
     public function __construct(private int $receiverId, private NotificationInterface $notification)
     {
@@ -23,4 +23,9 @@ readonly class NotificationMessage
         return $this->notification;
     }
 
+    public function getMessage(): string|null
+    {
+        // TODO: Implement getMessage() method.
+        return '';
+    }
 }
