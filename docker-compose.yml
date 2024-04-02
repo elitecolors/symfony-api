@@ -64,5 +64,11 @@ services:
     ports:
       - "1025:1025"  # SMTP server port
       - "8025:8025"  # MailHog web UI port
+
+   rabbitmq:
+     image: rabbitmq:management
+     ports:
+       - "5672:5672"
+       - "15672:15672"
 volumes:
     dbfiles:

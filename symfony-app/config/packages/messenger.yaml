@@ -6,16 +6,15 @@ framework:
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
             notifications_queue:
-              dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+              dsn: '%env(MESSENGER_RABIT_TRANSPORT_DSN)%'
               options:
-                queue_name: notifications_queue
-                auto_setup: false
+                #queue_name: high
             # failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
 
         routing:
             # Route your messages to the transports
-             'App\Message\Notifications\NotificationMessage': notifications_queue
+             'App\Message\Notifications\Notification\ProductNotification': notifications_queue
 
 # when@test:
 #    framework:

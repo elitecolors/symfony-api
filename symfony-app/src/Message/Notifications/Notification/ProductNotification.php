@@ -6,12 +6,11 @@ namespace App\Message\Notifications\Notification;
 
 use App\Entity\Product;
 
-final class ProductNotification extends BaseNotification
+final readonly class ProductNotification
 {
 
-   public function __construct(private readonly Product $product
+   public function __construct(private Product $product
    ) {
-       parent::__construct();
    }
 
     public function getCode (): string
