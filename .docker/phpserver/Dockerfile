@@ -40,5 +40,4 @@ RUN usermod -u 1000 www-data
 RUN usermod -a -G users www-data
 RUN chown -R www-data:www-data /var/www
 
-# Expose Xdebug remote debugging port
-EXPOSE 9003
+
