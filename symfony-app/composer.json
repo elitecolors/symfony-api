@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "^2.12",
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^3.1",
+        "jolicode/elastically": "^1.9",
         "league/csv": "^9.15",
         "nelmio/api-doc-bundle": "^4.24",
         "oneup/flysystem-bundle": "^4.12",

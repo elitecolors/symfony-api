@@ -1,0 +1,28 @@
+# config/packages/elastically.yaml
+elastically:
+  connections:
+    default:
+      client:
+        host: '%env(ELASTICSEARCH_HOST)%'
+        port: '%env(ELASTICSEARCH_PORT)%'
+        # If you want to use the Symfony HttpClient (you MUST create this service)
+        #transport:           'JoliCode\Elastically\Transport\HttpClientTransport'
+
+      # Path to the mapping directory (in YAML)
+      mapping_directory:       '%kernel.project_dir%/config/elasticsearch'
+
+      # Size of the bulk sent to Elasticsearch (default to 100)
+      bulk_size:               100
+
+      # Mapping between an index name and a FQCN
+      index_class_mapping:
+        my-foobar-index:     App\Dto\Foobar
+
+      # Configuration for the serializer
+      serializer:
+        # Fill a static context
+        context_mapping:
+          foo:                 bar
+
+      # If you want to add a prefix for your index in elasticsearch (you can still call it by its base name everywhere!)
+      # prefix: '%kernel.environment%'

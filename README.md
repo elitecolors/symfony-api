@@ -33,3 +33,12 @@ Note: OS recommendation - Linux Ubuntu based.
 
 ### Access to phpserver container 
 docker exec -it -u www-data api-phpserver /bin/bash
+
+## URL rabbit 
+http://localhost:15672/#/
+
+user : guess
+pwd: guess
+
+## URL Elasticsearch 
+http://localhost:9200/
