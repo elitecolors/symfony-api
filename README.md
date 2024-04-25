@@ -42,3 +42,7 @@ pwd: guess
 
 ## URL Elasticsearch 
 http://localhost:9200/
+
+example
+http://localhost:9200/products
+

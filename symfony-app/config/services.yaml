@@ -22,5 +22,10 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Controller\SearchController:
+        tags: [ controller.service_arguments ]
+        bind:
+            FOS\ElasticaBundle\Finder\TransformedFinder $productsFinder: '@fos_elastica.finder.products'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
